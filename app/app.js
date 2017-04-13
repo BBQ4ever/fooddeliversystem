@@ -1,3 +1,4 @@
+var credentials = require('./data/credentials.json');
 var ddb = require('dynamodb').ddb({ accessKeyId: 'amazon access key',
                                     secretAccessKey: 'amazon secret key',
                                     endpoint: 'dynamodb.us-west-2.amazonaws.com'});
