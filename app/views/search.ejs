@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include partials/template/head.ejs %>
+</head>
+  <body id="<%= pageID %>">
+    <% include partials/template/navbar.ejs %>
+    <br><br>
+    <div class="container">
+    <% if (pageID == 'searchindex') { %>
+    <% include partials/content/tablesingle.ejs %>
+    <% } else {%>
+    <% include partials/content/table.ejs %>
+    <% } %>  
+    <hr>
+    <footer>
+    <% include partials/template/footer.ejs %>
+    </footer>
+    </div> <!-- /container -->
+    <% include partials/template/jsdefaults.ejs %>
+  </body>
+</html>

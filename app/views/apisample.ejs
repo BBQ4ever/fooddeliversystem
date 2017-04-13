@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head><% include partials/template/head.ejs %></head>
+  <body id="<%= pageID %>">
+    <% include partials/template/navbar.ejs %>
+    <br><br><br>
+    <div class="container">
+    <h3>Encode URL: <%= urlEncode %></h3>
+    <p>Function: <%= apiUsage %></p>
+    <br>
+    <% if ( pageID == 'form1'){ %>
+    <% include partials/content/form1.ejs %>
+    <% } else if ( pageID == 'form2'){ %> 
+    <% include partials/content/form2.ejs %>
+    <% } else if ( pageID == 'form3'){ %> 
+    <% include partials/content/form3.ejs %>
+    <% } else if ( pageID == 'form4'){ %> 
+    <% include partials/content/form4.ejs %>
+    <% } else if ( pageID == 'form5'){ %> 
+    <% include partials/content/form5.ejs %>
+    <% } else if ( pageID == 'form6'){ %> 
+    <% include partials/content/form6.ejs %>
+    <% } else if ( pageID == 'form7'){ %> 
+    <% include partials/content/form7.ejs %>
+    <% } %>
+    <hr>
+    <footer>
+    <% include partials/template/footer.ejs %>
+    </footer>
+    </div> <!-- /container -->
+    <% include partials/template/jsdefaults.ejs %>
+  </body>
+</html>

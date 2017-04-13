@@ -1,0 +1,27 @@
+        <h3><%=contentTitle%></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Package</th>
+                  <th>Temperature</th>
+                  <th>Humidity</th>
+                  <th>Location</th>
+                  <th>Scaned on </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% json.items.forEach(function(item){ %>
+                <tr>
+                  <td><a href='/api/dynamodbquery/<%= JSON.parse(item.timestp) %>?packageid=<%=  JSON.parse(item.packageId) %>'><%= item.packageId %></a></td>
+                  <td><%= item.temperature %></td>
+                  <td><%= item.humidity %></td>
+                  <td><%= item.currLocation %></td>
+                  <td><%= item.lastscan %></td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+
+

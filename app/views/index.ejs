@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head><% include partials/template/head.ejs %></head>
+  <body id="<%= pageID %>">
+    <% include partials/template/navbar.ejs %>
+    <% if (pageID == 'home') { %>
+    <div class="jumbotron">
+    <% include partials/template/jumbotron.ejs %>
+    </div>
+    <% } %>
+    <div class="container">
+    <% if ( pageID == 'signin'){ %>
+    <br><br>
+    <% include partials/template/signin.ejs %>
+    <% } else if ( pageID == 'home'){ %> 
+    <% include partials/content/marketing.ejs %>
+    <% } else if ( pageID == 'search'){ %>
+    <% include partials/template/searchpage.ejs %>
+    <% } %>
+    <hr>
+    <footer>
+    <% include partials/template/footer.ejs %>
+    </footer>
+    </div> <!-- /container -->
+    <% include partials/template/jsdefaults.ejs %>
+  </body>
+</html>
