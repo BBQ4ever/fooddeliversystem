@@ -35,3 +35,8 @@ app dependencies include:
 
     nodemon -e css,ejs,js,json --watch app --ignore 'app/data/credentials.json'
   change file watching types by edite css, ejs, js, json after -e
+
+# changing app running port other than 3000 by editing package.json file
+
+    PORT 4000 nodemon -e css,ejs,js,json --watch app --ignore 'app/data/credentials.json'
+   replace 4000 with any ports you may want
