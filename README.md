@@ -11,5 +11,5 @@ cd fooddeliversystem
 # install node package by using npm
 npm install 
 
-# run sudo nom install if needed
+# run sudo npm install if needed
 sudo npm install
