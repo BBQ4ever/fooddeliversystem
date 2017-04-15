@@ -15,11 +15,10 @@ app dependencies include:
 
 # install with git
 
-git clone https://github.com/BBQ4ever/fooddeliversystem
-
-cd fooddeliversystem
-
-npm install 
+    git clone https://github.com/BBQ4ever/fooddeliversystem
+    cd fooddeliversystem
+    npm install 
 
 # run sudo npm install if needed
-sudo npm install
+
+    sudo npm install
