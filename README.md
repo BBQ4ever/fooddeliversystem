@@ -12,6 +12,7 @@ app dependencies include:
     "nodemon": "^1.11.0",
     "reload": "^1.0.0",
     "socket.io": "^1.4.8"
+   depandencies will installed automaticly after run sudo npm install command
 
 # install with git
 
