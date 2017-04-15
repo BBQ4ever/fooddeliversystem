@@ -1,6 +1,6 @@
-var credentials = require('./data/credentials.json');
-var ddb = require('dynamodb').ddb({ accessKeyId: 'amazon access key',
-                                    secretAccessKey: 'amazon secret key',
+var credentials = require('./data/credential.json');
+var ddb = require('dynamodb').ddb({ accessKeyId: credentials.accessKeyId,
+                                    secretAccessKey: credentials.secretAccessKey,
                                     endpoint: 'dynamodb.us-west-2.amazonaws.com'});
 var express = require('express');
 var reload = require('reload');
