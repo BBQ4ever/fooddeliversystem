@@ -18,6 +18,13 @@ app dependencies include:
     git clone https://github.com/BBQ4ever/fooddeliversystem
     cd fooddeliversystem
     sudo npm install 
+    
+# setup aws credential infomation at app/data/credential.json
+    
+    { "accessKeyId": <YOUR_ACCESS_KEY_ID>, "secretAccessKey": <YOUR_SECRET_ACCESS_KEY>, "region": "us-west-2" }
+   Replace <YOUR_ACCESS_KEY_ID> with "your access key id" and replace <YOUR_SECRET_ACCESS_KEY> with "your secret access key"
+   "" are needed.
+
 
 # how to run this app
  
