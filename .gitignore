@@ -38,5 +38,4 @@ jspm_packages
 
 .DS_Store
 
-#credentials file ignore
-credential.json
+app/data/credential.json
