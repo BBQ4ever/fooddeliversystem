@@ -17,8 +17,13 @@ app dependencies include:
 
     git clone https://github.com/BBQ4ever/fooddeliversystem
     cd fooddeliversystem
-    npm install 
+    sudo npm install 
 
-# run sudo npm install if needed
+# how to run this app
+ 
+    sudo npm start
 
-    sudo npm install
+# default npm start scripts
+
+    nodemon -e css,ejs,js,json --watch app --ignore 'app/data/credentials.json'
+  change file watching types by edite css, ejs, js, json after -e
