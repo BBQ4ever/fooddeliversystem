@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('ddbsetup', ddb);//push ddb lib with router
 app.set('view engine', 'ejs');//set up view engine for views behind router
 app.set('views', 'app/views');//set up view engine folder
@@ -26,7 +26,7 @@ app.use(require('./routes/searchpage'));//search page for latest scan info
 
 // start the server
 var server = app.listen(app.get('port'), function() {
-    console.log('Listening on port' + app.get('port'));
+    console.log('Listening on port: ' + app.get('port'));
 });
 
 reload(server, app);
