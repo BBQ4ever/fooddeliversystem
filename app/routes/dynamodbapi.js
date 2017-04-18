@@ -77,15 +77,15 @@ router.post('/api/dynamodbupdateall', function(request, response) {
                         console.log('Updated all package info at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
                });
-        response.render('apiresponse',{
-        pageTitle: 'apiresponse',
-        contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
-        json: request.body,
-        timestp: lastEvaluatedKey,
-        lastscan: time,
-        backurl: '/dynamodbupdateall',
-        pageID: 'apiresponseupdate'
-    });
+            response.render('apiresponse',{
+                pageTitle: 'apiresponse',
+                contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
+                json: request.body,
+                timestp: lastEvaluatedKey,
+                lastscan: time,
+                backurl: '/dynamodbupdateall',
+                pageID: 'apiresponseupdate'
+            });
            }
     }); 
     //ddb.consumedCapacity();
@@ -113,9 +113,17 @@ router.post('/api/dynamodbupdateuser', function(request, response) {
                         console.log('Updated userID at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
                 });
+            response.render('apiresponse',{
+                pageTitle: 'apiresponse',
+                contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
+                json: request.body,
+                timestp: lastEvaluatedKey,
+                lastscan: time,
+                backurl: '/dynamodbupdateall',
+                pageID: 'apiresponseupdate'
+            });
         }
     }); 
-    response.send('Updated userID at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
     //ddb.consumedCapacity();
 });
 
@@ -141,9 +149,17 @@ router.post('/api/dynamodbupdatesensor', function(request, response) {
                         console.log('temp and humid updated to the package:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
             });
+            response.render('apiresponse',{
+                pageTitle: 'apiresponse',
+                contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
+                json: request.body,
+                timestp: lastEvaluatedKey,
+                lastscan: time,
+                backurl: '/dynamodbupdateall',
+                pageID: 'apiresponseupdate'
+            });
         }
     }); 
-    response.send('temp and humid updated to the package at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
     //ddb.consumedCapacity();
 });
 
@@ -168,9 +184,17 @@ router.post('/api/dynamodbupdatelocation', function(request, response) {
                         console.log('location updated to the package:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
             });
+            response.render('apiresponse',{
+                pageTitle: 'apiresponse',
+                contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
+                json: request.body,
+                timestp: lastEvaluatedKey,
+                lastscan: time,
+                backurl: '/dynamodbupdateall',
+                pageID: 'apiresponseupdate'
+            });
         }
     }); 
-    response.send('location updated to the package:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
     //ddb.consumedCapacity();
 });
 
@@ -194,9 +218,17 @@ router.post('/api/dynamodbdelete', function (request, response) {
                         console.log('lastItem deleted:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
                });
+            response.render('apiresponse',{
+                pageTitle: 'apiresponse',
+                contentTitle:'Package '+ Number(request.body.packageid) + ' Deleted !',
+                json: request.body,
+                timestp: lastEvaluatedKey,
+                lastscan: time,
+                backurl: '/dynamodbupdateall',
+                pageID: 'apiresponseupdate'
+            });
         }
     }); 
-    response.send('lastItem deleted:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
 });
 
 
