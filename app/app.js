@@ -20,6 +20,7 @@ app.use(express.static('app/public'));//set up middleware for folder public
 app.use(require('./routes/index'));// home page
 app.use(require('./routes/packageinfo'));//dynamodb query, dynamodb query/:index, dunamodb query last
 app.use(require('./routes/dynamodbapi'));//dynamo db API for put, post, delete. See dynamodbapi.js for details
+app.use(require('./routes/dynamodbapiurlencoded'));//dynamo db API for put, post, delete. See dynamodbapi.js for details
 app.use(require('./routes/login'));//test login page
 app.use(require('./routes/apiform'));//API samples with forms
 app.use(require('./routes/searchpage'));//search page for latest scan info
