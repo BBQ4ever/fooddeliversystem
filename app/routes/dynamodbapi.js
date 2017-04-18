@@ -24,6 +24,7 @@ router.post('/api/dynamodbput', function(request, response) {
         pageTitle: 'apiresponse',
         contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
         json: item,
+        backurl: '/dynamodbput',
         pageID: 'apiresponse'
     });
 });
@@ -46,6 +47,7 @@ router.post('/api/setuppackage', function(request, response) {
         pageTitle: 'apiresponse',
         contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
         json: item,
+        backurl: '/setuppackage',
         pageID: 'apiresponse'
     });
 });
@@ -81,6 +83,7 @@ router.post('/api/dynamodbupdateall', function(request, response) {
         json: request.body,
         timestp: lastEvaluatedKey,
         lastscan: time,
+        backurl: '/dynamodbupdateall',
         pageID: 'apiresponseupdate'
     });
            }
