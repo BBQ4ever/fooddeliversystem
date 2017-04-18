@@ -4,7 +4,7 @@
   "description": "food deliver system designed by ITU",
   "main": "app/app.js",
   "scripts": {
-    "start": "nodemon -e css,ejs,js,json --watch app --ignore 'app/data/credentials.json'"
+    "start": "nodemon -e css,ejs,js,json --watch app --ignore 'app/data/credential.json'"
   },
   "author": "Guanqi Song",
   "license": "MIT License",
