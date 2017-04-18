@@ -8,7 +8,7 @@ router.post('/api/dynamodbput', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var item = {packageId: Number(request.body.packageid),
                 timestp: Date.now(),
-                lastscan: new Date(),
+                lastscan: Date(),
                 humidity: request.body.humidity,
                 userId: request.body.userid,
                 temperature: request.body.temperature,
@@ -34,7 +34,7 @@ router.post('/api/setuppackage', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var item = {packageId: Number(request.body.packageid),
                 timestp: Date.now(),
-                lastscan: new Date(),};
+                lastscan: Date(),};
     ddb.putItem('fooddeliversystem', item, {}, function(err, res, cap) {
         if(err) {
             console.log(err);
@@ -53,7 +53,7 @@ router.post('/api/setuppackage', function(request, response) {
 // POST http://localhost:3000/api/dynamodbupdateall
 // update the latest package information with all arttributes
 router.post('/api/dynamodbupdateall', function(request, response) {
-    var time = new Date();
+    var time = Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
     ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
@@ -66,7 +66,7 @@ router.post('/api/dynamodbupdateall', function(request, response) {
                                                                     'humidity': { value: request.body.humidity },
                                                                     'userId': { value: request.body.userid },
                                                                     'currLocation': { value: request.body.currlocation},
-                                                                    'lastscan': { value: Date()}}, {}, 
+                                                                    'lastscan': { value: time}}, {}, 
                 function(err, resp, cap) {
                     if(err)
                         console.log(err);
@@ -91,7 +91,7 @@ router.post('/api/dynamodbupdateall', function(request, response) {
 // POST http://localhost:3000/api/dynamodbupdateuser
 // update the latest package information with user ID
 router.post('/api/dynamodbupdateuser', function(request, response) {
-    var time = Date.now();
+    var time = Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
     ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
@@ -101,7 +101,7 @@ router.post('/api/dynamodbupdateuser', function(request, response) {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
             ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 
                                                                                 'userId': { value: request.body.userid },
-                                                                                'lastscan': { value: Date() }} , {}, 
+                                                                                'lastscan': { value: time }} , {}, 
                 function(err, resp, cap) {
                     if(err)
                         console.log(err);
