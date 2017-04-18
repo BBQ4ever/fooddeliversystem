@@ -25,6 +25,7 @@ router.post('/api/dynamodbput', function(request, response) {
         contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
         json: item,
         backurl: '/dynamodbput',
+        buttonName: 'Create Anather',
         pageID: 'apiresponse'
     });
 });
@@ -48,6 +49,7 @@ router.post('/api/setuppackage', function(request, response) {
         contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
         json: item,
         backurl: '/setuppackage',
+        buttonName: 'Create Anather',
         pageID: 'apiresponse'
     });
 });
@@ -84,6 +86,7 @@ router.post('/api/dynamodbupdateall', function(request, response) {
                 timestp: lastEvaluatedKey,
                 lastscan: time,
                 backurl: '/dynamodbupdateall',
+                buttonName: 'Update Anather',
                 pageID: 'apiresponseupdate'
             });
            }
@@ -120,6 +123,7 @@ router.post('/api/dynamodbupdateuser', function(request, response) {
                 timestp: lastEvaluatedKey,
                 lastscan: time,
                 backurl: '/dynamodbupdateall',
+                buttonName: 'Update Anather',
                 pageID: 'apiresponseupdate'
             });
         }
@@ -156,6 +160,7 @@ router.post('/api/dynamodbupdatesensor', function(request, response) {
                 timestp: lastEvaluatedKey,
                 lastscan: time,
                 backurl: '/dynamodbupdateall',
+                buttonName: 'Update Anather',
                 pageID: 'apiresponseupdate'
             });
         }
@@ -191,7 +196,8 @@ router.post('/api/dynamodbupdatelocation', function(request, response) {
                 timestp: lastEvaluatedKey,
                 lastscan: time,
                 backurl: '/dynamodbupdateall',
-                pageID: 'apiresponseupdate'
+                pageID: 'apiresponseupdate',
+                buttonName: 'Update Anather'
             });
         }
     }); 
@@ -225,7 +231,8 @@ router.post('/api/dynamodbdelete', function (request, response) {
                 timestp: lastEvaluatedKey,
                 lastscan: time,
                 backurl: '/dynamodbupdateall',
-                pageID: 'apiresponseupdate'
+                pageID: 'apiresponseupdate',
+                buttonName: 'Delete Anather'
             });
         }
     }); 
