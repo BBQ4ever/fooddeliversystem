@@ -5,11 +5,14 @@
     <% include partials/template/navbar.ejs %>
     <br><br><br>
     <div class="container">
-    <h3>package info updated</h3>
+    <h3><%= contentTitle %></h3>
     <p></p>
     <br>
     <% if ( pageID == 'apiresponse'){ %>
     <% include partials/content/apibackform.ejs %>
+    <% } %>
+    <% if ( pageID == 'apiresponseupdate'){ %>
+    <% include partials/content/apibackformupdate.ejs %>
     <% } %>
     <hr>
     <footer>

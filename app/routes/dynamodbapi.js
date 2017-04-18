@@ -8,7 +8,7 @@ router.post('/api/dynamodbput', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var item = {packageId: Number(request.body.packageid),
                 timestp: Date.now(),
-                lastscan: Date(),
+                lastscan: new Date(),
                 humidity: request.body.humidity,
                 userId: request.body.userid,
                 temperature: request.body.temperature,
@@ -22,7 +22,7 @@ router.post('/api/dynamodbput', function(request, response) {
     });       
     response.render('apiresponse',{
         pageTitle: 'apiresponse',
-        contentTitle:'All Package Details for Package: '+ Number(request.query.packageid),
+        contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
         json: item,
         pageID: 'apiresponse'
     });
@@ -42,7 +42,12 @@ router.post('/api/setuppackage', function(request, response) {
             console.log('Item inserted to fooddeliversystem:'+cap+'\n' + JSON.stringify(item, null, 2));
       }
     });       
-    response.send('Item inserted to fooddeliversystem:\n' + JSON.stringify(item,null,2));
+    response.render('apiresponse',{
+        pageTitle: 'apiresponse',
+        contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
+        json: item,
+        pageID: 'apiresponse'
+    });
 });
 
 // POST http://localhost:3000/api/dynamodbupdateall
@@ -55,7 +60,6 @@ router.post('/api/dynamodbupdateall', function(request, response) {
         if(err){
             console.log(err);
         } else {
-            //console.log(JSON.stringify(res,['items','timestp']).slice(21, 34));
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
             ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 
                                                                     'temperature': { value: request.body.temperature },
@@ -71,9 +75,16 @@ router.post('/api/dynamodbupdateall', function(request, response) {
                         console.log('Updated all package info at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
                     }
                });
+        response.render('apiresponse',{
+        pageTitle: 'apiresponse',
+        contentTitle:'Package '+ Number(request.body.packageid) + ' updated !',
+        json: request.body,
+        timestp: lastEvaluatedKey,
+        lastscan: time,
+        pageID: 'apiresponseupdate'
+    });
            }
     }); 
-    response.send('Updated all package info at:\n' + time + "\n" + JSON.stringify(request.body, null, 2));
     //ddb.consumedCapacity();
 });
 
