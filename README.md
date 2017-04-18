@@ -23,7 +23,7 @@ app dependencies include:
 # setup aws credential infomation at app/data/credential.json
     
     { "accessKeyId": "<YOUR_ACCESS_KEY_ID>", "secretAccessKey": "<YOUR_SECRET_ACCESS_KEY>", "region": "us-west-2" }
-   Replace <YOUR_ACCESS_KEY_ID> with "your access key id" and replace <YOUR_SECRET_ACCESS_KEY> with "your secret access key",
+   Create credential.json file at path app/data. Replace <YOUR_ACCESS_KEY_ID> with "your access key id" and replace <YOUR_SECRET_ACCESS_KEY> with "your secret access key",
    "" are needed. "region" not used in this app and can be removed. "endpiont" setup might needed in app.js, defaut value is "dynamodb.us-west-2.amazonaws.com" for access dynamodb in origon region.
 
 
