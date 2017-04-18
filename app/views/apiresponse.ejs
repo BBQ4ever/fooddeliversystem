@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head><% include partials/template/head.ejs %></head>
+  <body id="<%= pageID %>">
+    <% include partials/template/navbar.ejs %>
+    <br><br><br>
+    <div class="container">
+    <h3>package info updated</h3>
+    <p></p>
+    <br>
+    <% if ( pageID == 'apiresponse'){ %>
+    <% include partials/content/apibackform.ejs %>
+    <% } %>
+    <hr>
+    <footer>
+    <% include partials/template/footer.ejs %>
+    </footer>
+    </div> <!-- /container -->
+    <% include partials/template/jsdefaults.ejs %>
+  </body>
+</html>

@@ -20,7 +20,12 @@ router.post('/api/dynamodbput', function(request, response) {
             console.log('Item inserted to fooddeliversystem:'+cap+'\n' + JSON.stringify(item, null, 2));
       }
     });       
-    response.send('Item inserted to fooddeliversystem:\n' + JSON.stringify(item,null,2));
+    response.render('apiresponse',{
+        pageTitle: 'apiresponse',
+        contentTitle:'All Package Details for Package: '+ Number(request.query.packageid),
+        json: item,
+        pageID: 'apiresponse'
+    });
 });
 
 // POST http://localhost:3000/api/setuppackage
