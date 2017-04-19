@@ -8,7 +8,7 @@
                   <th>Temperature</th>
                   <th>Humidity</th>
                   <th>Location</th>
-                  <th>Scaned on </th>
+                  <th>map</th>
                 </tr>
               </thead>
               <tbody>
@@ -19,7 +19,7 @@
                   <td><%= item.temperature %></td>
                   <td><%= item.humidity %></td>
                   <td><%= item.currLocation %></td>
-                  <td><%= item.lastscan %></td>
+                  <td><%= item.mapLocation %><%= item.GPS %></td>
                 </tr>
                 <% }); %>
               </tbody>

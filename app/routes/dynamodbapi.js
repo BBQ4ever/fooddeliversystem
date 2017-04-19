@@ -6,13 +6,15 @@ var router = express.Router();
 // create a new row of package information in the table
 router.post('/api/dynamodbput', function(request, response) {
     var ddb = request.app.get('ddbsetup');
+    var gps = [];
+    gps[0] = request.body.latitude;
+    gps[1] = request.body.longitude;
     var item = {packageId: request.body.packageid,
-                timestp: Date.now(),
-                lastscan: Date(),
+                timestp: Number(request.body.timestamp),
+                //lastscan: Date(),
                 humidity: request.body.humidity,
-                userId: request.body.userid,
                 temperature: request.body.temperature,
-                currLocation: request.body.currlocation };
+                GPS: gps };
     ddb.putItem('ITUFoodDeliverySystem', item, {}, function(err, res, cap) {
         if(err) {
             console.log(err);
@@ -22,7 +24,7 @@ router.post('/api/dynamodbput', function(request, response) {
     });       
     response.render('apiresponse',{
         pageTitle: 'apiresponse',
-        contentTitle:'Package '+ Number(request.body.packageid) + ' Created !',
+        contentTitle:'Package '+ request.body.packageid + ' Created !',
         json: item,
         backurl: '/dynamodbput',
         buttonName: 'Create Anather',
