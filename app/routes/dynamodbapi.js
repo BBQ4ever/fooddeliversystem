@@ -18,7 +18,7 @@ router.post('/api/dynamodbput', function(request, response) {
         if(err) {
             console.log(err);
         } else {
-            console.log('Item inserted to fooddeliversystem:'+cap+'\n' + JSON.stringify(item, null, 2));
+            console.log('Item inserted to fooddeliverysystem:'+cap+'\n' + JSON.stringify(item, null, 2));
       }
     });       
     response.render('apiresponse',{
@@ -38,7 +38,7 @@ router.post('/api/setuppackage', function(request, response) {
     var item = {packageId: Number(request.body.packageid),
                 timestp: Date.now(),
                 lastscan: Date(),};
-    ddb.putItem('ITUFoodDeliverSystem', item, {}, function(err, res, cap) {
+    ddb.putItem('ITUFoodDeliverySystem', item, {}, function(err, res, cap) {
         if(err) {
             console.log(err);
         } else {
@@ -61,7 +61,7 @@ router.post('/api/dynamodbupdateall', function(request, response) {
     var time = Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverySystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
@@ -101,7 +101,7 @@ router.post('/api/dynamodbupdateuser', function(request, response) {
     var time = Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverySystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
@@ -138,12 +138,12 @@ router.post('/api/dynamodbupdatesensor', function(request, response) {
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverySystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 'temperature': { value: request.body.temperature },
+            ddb.updateItem('ITUFoodDeliverySystem', Number(request.body.packageid), lastEvaluatedKey, { 'temperature': { value: request.body.temperature },
                                                                                                     'humidity': { value: request.body.humidity },
                                                                                                     'lastscan': { value: Date() } }, {}, 
                 function(err, resp, cap) {
@@ -175,12 +175,12 @@ router.post('/api/dynamodbupdatelocation', function(request, response) {
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverySystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 'currLocation': { value: request.body.currlocation},
+            ddb.updateItem('ITUFoodDeliverySystem', Number(request.body.packageid), lastEvaluatedKey, { 'currLocation': { value: request.body.currlocation},
                                                                                                     'lastscan': { value: Date() } }, {}, 
                 function(err, resp, cap) {
                     if(err)
@@ -211,12 +211,12 @@ router.post('/api/dynamodbdelete', function (request, response) {
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverySystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.deleteItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, {},
+            ddb.deleteItem('ITUFoodDeliverySystem', Number(request.body.packageid), lastEvaluatedKey, {},
                 function(err, resp, cap) {
                     if(err)
                         console.log(err);
