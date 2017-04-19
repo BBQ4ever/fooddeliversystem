@@ -4,6 +4,7 @@
               <thead>
                 <tr>
                   <th>Package</th>
+                  <th>Time Stamp</th>
                   <th>Temperature</th>
                   <th>Humidity</th>
                   <th>Location</th>
@@ -14,6 +15,7 @@
                 <% json.items.forEach(function(item){ %>
                 <tr>
                   <td><a href='/api/dynamodbquery/<%= JSON.parse(item.timestp) %>?packageid=<%=  JSON.parse(item.packageId) %>'><%= item.packageId %></a></td>
+                  <td><%= item.timestp %></td>
                   <td><%= item.temperature %></td>
                   <td><%= item.humidity %></td>
                   <td><%= item.currLocation %></td>

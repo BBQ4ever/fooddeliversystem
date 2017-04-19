@@ -13,7 +13,7 @@ router.put('/api/urlencoded/dynamodbput', function(request, response) {
                 userId: request.body.userid,
                 temperature: request.body.temperature,
                 currLocation: request.body.currlocation };
-    ddb.putItem('fooddeliversystem', item, {}, function(err, res, cap) {
+    ddb.putItem('ITUFoodDeliverSystem', item, {}, function(err, res, cap) {
         if(err) {
             console.log(err);
         } else {
@@ -30,7 +30,7 @@ router.put('/api/urlencoded/setuppackage', function(request, response) {
     var item = {packageId: Number(request.body.packageid),
                 timestp: Date.now(),
                 lastscan: new Date(),};
-    ddb.putItem('fooddeliversystem', item, {}, function(err, res, cap) {
+    ddb.putItem('ITUFoodDeliverSystem', item, {}, function(err, res, cap) {
         if(err) {
             console.log(err);
         } else {
@@ -46,13 +46,13 @@ router.post('/api/urlencoded/dynamodbupdateall', function(request, response) {
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             //console.log(JSON.stringify(res,['items','timestp']).slice(21, 34));
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 
+            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 
                                                                     'temperature': { value: request.body.temperature },
                                                                     'humidity': { value: request.body.humidity },
                                                                     'userId': { value: request.body.userid },
@@ -78,12 +78,12 @@ router.post('/api/urlencoded/dynamodbupdateuser', function(request, response) {
     var time = Date.now();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 
+            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 
                                                                                 'userId': { value: request.body.userid },
                                                                                 'lastscan': { value: Date() }} , {}, 
                 function(err, resp, cap) {
@@ -106,12 +106,12 @@ router.post('/api/urlencoded/dynamodbupdatesensor', function(request, response) 
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 'temperature': { value: request.body.temperature },
+            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 'temperature': { value: request.body.temperature },
                                                                                                     'humidity': { value: request.body.humidity },
                                                                                                     'lastscan': { value: Date() } }, {}, 
                 function(err, resp, cap) {
@@ -134,12 +134,12 @@ router.post('/api/urlencoded/dynamodbupdatelocation', function(request, response
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.updateItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, { 'currLocation': { value: request.body.currlocation},
+            ddb.updateItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, { 'currLocation': { value: request.body.currlocation},
                                                                                                     'lastscan': { value: Date() } }, {}, 
                 function(err, resp, cap) {
                     if(err)
@@ -161,12 +161,12 @@ router.delete('/api/urlencoded/dynamodbdelete', function (request, response) {
     var time = new Date();
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('fooddeliversystem', Number(request.body.packageid), option, function(err, res) {
+    ddb.query('ITUFoodDeliverSystem', Number(request.body.packageid), option, function(err, res) {
         if(err){
             console.log(err);
         } else {
             var lastEvaluatedKey = res.lastEvaluatedKey.range;
-            ddb.deleteItem('fooddeliversystem', Number(request.body.packageid), lastEvaluatedKey, {},
+            ddb.deleteItem('ITUFoodDeliverSystem', Number(request.body.packageid), lastEvaluatedKey, {},
                 function(err, resp, cap) {
                     if(err)
                         console.log(err);

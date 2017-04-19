@@ -13,6 +13,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('ddbsetup', ddb);//push ddb lib with router
 app.set('view engine', 'ejs');//set up view engine for views behind router
 app.set('views', 'app/views');//set up view engine folder
+//app.set('ddbTable', 'testDB3'); 
 
 app.locals.siteTitle = 'FoodDeliverSystem';//set up public varible
 //routes start here
