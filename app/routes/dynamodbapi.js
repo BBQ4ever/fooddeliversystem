@@ -4,14 +4,13 @@ var router = express.Router();
 
 // POST http://localhost:3000/api/dynamodbput
 // create a new row of package information in the table
-router.get('/api/dynamodbput', function(request, response) {
+router.post('/api/dynamodbput', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var gps = [];
     gps[0] = request.body.latitude;
     gps[1] = request.body.longitude;
     var item = {packageId: request.body.packageid,
                 timestp: Number(request.body.timestamp),
-                //lastscan: Date(),
                 humidity: request.body.humidity,
                 temperature: request.body.temperature,
                 GPS: gps };
