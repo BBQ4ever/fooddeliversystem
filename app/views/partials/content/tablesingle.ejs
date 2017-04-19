@@ -13,11 +13,31 @@
               <tbody>
                 <tr>
                   <td><%= jsonpackage %></td>
-                  <td><%= jsontemp %></td>
-                  <td><%= jsonhumid %></td>
-                  <td><%= jsonlocation %></td>
+                  <td><%= jsontemp %>°C</td>
+                  <td><%= jsonhumid %>%</td>
+                  <td><%= jsonlocation %><%= jsongps %></td>
                   <td><%= jsontimestp %></td>
                 </tr>
               </tbody>
             </table>
+            <div id="map" style="width:100%;height:400px;"></div>
           </div>
+<% if(jsongps) { %>
+    <script>
+      var jsongps = <%- JSON.stringify(jsongps) %>;
+      function initMap() {
+        var uluru = {lat: JSON.parse(jsongps[1]), lng: JSON.parse(jsongps[0])};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfwhUc4AhQiGier8ReqENRPrVbcWjYQng&callback=initMap">
+    </script>
+<% } %>

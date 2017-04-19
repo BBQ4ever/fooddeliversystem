@@ -24,12 +24,12 @@ router.get('/api/dynamodbquery', function(request, response) {
 //use index to pick up a package info
 router.get('/api/dynamodbquery/:index', function(request, response) {
     var ddb = request.app.get('ddbsetup');
-    ddb.query('ITUFoodDeliverSystem', Number(request.query.packageid), {}, 
+    ddb.query('ITUFoodDeliverySystem', request.query.packageid, {}, 
     function(err, res, cap) {
         if(err){
             console.log(err);
         } else {
-            console.log('GetItem: ' + cap);
+            //console.log('GetItem: ' + cap);
             //console.log(JSON.stringify(res.items[request.params.index], null, 2));
             var packagetemp = [];
             var packagehumid = [];
@@ -44,6 +44,7 @@ router.get('/api/dynamodbquery/:index', function(request, response) {
                     packagetimestp = packagetimestp.concat(item.timestp);
                     package = package.concat(item.packageId);
                     packagetimestp = item.timestp;
+                    packagegps = item.GPS;
                 }
             });
             response.render('search',{
@@ -54,6 +55,7 @@ router.get('/api/dynamodbquery/:index', function(request, response) {
                 jsonlocation: packagelocation,
                 jsontimestp: packagetimestp,
                 jsonpackage: package,
+                jsongps: packagegps,
                 pageID: 'searchindex'
             });
         }
@@ -65,7 +67,7 @@ router.get('/api/dynamodbquery/:index', function(request, response) {
 router.get('/api/dynamodbquerylast', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var option = {scanIndexForward:false, limit: 1};
-    ddb.query('ITUFoodDeliverSystem', Number(request.query.packageid), option, 
+    ddb.query('ITUFoodDeliverySystem', request.query.packageid, option, 
     function(err, res, cap) {
         if(err){
             console.log(err);
