@@ -183,7 +183,7 @@ router.delete('/api/urlencoded/dynamodbdelete', function (request, response) {
 
 // POST http://localhost:3000/api/dynamodbput
 // create a new row of package information in the table
-router.post('/api/fooddeliverysystemput', function(request, response) {
+router.get('/api/fooddeliverysystemput', function(request, response) {
     var ddb = request.app.get('ddbsetup');
     var gps = [];
     gps[0] = request.body.latitude;
