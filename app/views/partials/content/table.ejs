@@ -12,7 +12,7 @@
                 <% json.items.forEach(function(item){ %>
                 <tr>
                   <td><a href='/api/dynamodbquery/<%= JSON.parse(item.timestp) %>?packageid=<%=  JSON.parse(Number(item.packageId)) %>'><%= item.packageId %></a></td>
-                  <td><%= Date(item.timestp) %></td>
+                  <td><%= new Date(item.timestp) %></td>
                   <td><%= item.currLocation %><%= item.GPS %></td>
                 </tr>
                 <% }); %>
